@@ -21,6 +21,11 @@ function Notes(props) {
         setCurrentNote(response.data[0])
       }
     }
+
+    const createNote = async (params) => {
+      const note = await NoteService.create();
+      fetchNotes();
+    }
   
     const selectNote = (id) => {
       const note = notes.find((note) => {
@@ -44,7 +49,8 @@ function Notes(props) {
             <List
               notes={notes}
               selectNote={selectNote}
-              current_note={current_note} />
+              current_note={current_note} 
+              createNote={createNote}/>
           </Menu>
   
   
